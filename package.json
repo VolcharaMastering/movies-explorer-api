@@ -11,7 +11,7 @@
     "validator": "^13.7.0",
     "winston": "^3.8.2"
   },
-  "name": "express-mesto",
+  "name": "movies-explorer",
   "description": "Проект movies-explorer. Бэкэнд",
   "version": "1.0.0",
   "main": "index.js",
