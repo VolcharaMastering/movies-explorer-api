@@ -24,14 +24,14 @@ const delMovieById = async (req, res, next) => {
   try {
     const movie = await Movie.findById(movieId);
     if (!movie) {
-      next(new NotFound('Нет такой карточки'));
+      next(new NotFound('Нет такого фильма'));
       return;
     }
     if (JSON.stringify(movie.owner) === JSON.stringify(myId)) {
       await Movie.findByIdAndDelete(movieId);
       res.status(OK_CODE).send(movie);
     } else {
-      next(new PermissionError('У вас не достаточно прав для удаления карточки'));
+      next(new PermissionError('У вас не достаточно прав для удаления фильма'));
       return;
     }
   } catch (e) {
@@ -43,9 +43,32 @@ const delMovieById = async (req, res, next) => {
   }
 };
 const createMovie = async (req, res, next) => {
-  const { name, link } = req.body;
+  const {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    thumbnail,
+    nameRU,
+    nameEN,
+  } = req.body;
   try {
-    const movie = await new Movie({ name, link, owner: req.user._id }).save();
+    const movie = await new Movie({
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailerLink,
+      thumbnail,
+      owner: req.user._id,
+      nameRU,
+      nameEN,
+    }).save();
     res.status(CODE_CREATED).send(movie);
   } catch (e) {
     if (e.errors.name) {

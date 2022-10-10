@@ -52,11 +52,11 @@ const movieSchema = new mongoose.Schema({
     ref: 'user',
     required: true,
   },
-  movieId: {
+  /*   movieId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'MoviesExplorer',
     required: true,
-  },
+  }, */
   nameRU: {
     type: String,
     required: [true, 'Поле "название фильма на русском языке" должно быть заполнено'],
