@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable no-useless-escape */
 const { celebrate, Joi } = require('celebrate');
 const { ObjectId } = require('mongoose').Types;
@@ -69,8 +68,7 @@ const validateCreateMovie = celebrate({
     image: Joi.string().required().custom(validLink),
     trailerLink: Joi.string().required().custom(validLink),
     thumbnail: Joi.string().required().custom(validLink),
-    // owner: Joi.string().required().custom(validId),
-    // movieId: Joi.string().required().custom(validId),
+    movieId: Joi.string().required().custom(validId),
     nameRU: Joi.string().required().custom(validRuName),
     nameEN: Joi.string().required().custom(validEnName),
   }),

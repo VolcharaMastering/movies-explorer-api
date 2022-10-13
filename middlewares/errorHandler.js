@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const errorHandler = (err, req, res, next) => {
   const { code = 500, message } = err;
   if (code === 500) {

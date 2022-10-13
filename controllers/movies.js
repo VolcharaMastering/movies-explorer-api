@@ -1,6 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
 const NotFound = require('../errors/notFound');
 const PermissionError = require('../errors/permissionError');
 const IncorrectData = require('../errors/requestError');
@@ -52,6 +49,7 @@ const createMovie = async (req, res, next) => {
     image,
     trailerLink,
     thumbnail,
+    movieId,
     nameRU,
     nameEN,
   } = req.body;
@@ -65,6 +63,7 @@ const createMovie = async (req, res, next) => {
       image,
       trailerLink,
       thumbnail,
+      movieId,
       owner: req.user._id,
       nameRU,
       nameEN,

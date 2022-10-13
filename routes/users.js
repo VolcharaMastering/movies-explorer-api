@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const express = require('express');
 const { validateUpdateUser } = require('../middlewares/errorValidator');
 const NotFound = require('../errors/notFound');

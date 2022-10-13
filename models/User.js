@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-useless-escape */
 const mongoose = require('mongoose');
 const validMail = require('validator');
 

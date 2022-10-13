@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const AuthError = require('../errors/authError');
@@ -78,10 +76,10 @@ const createUser = async (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const { name, about } = req.body;
+  const { email, name } = req.body;
   User.findByIdAndUpdate(
     req.user._id,
-    { name, about },
+    { email, name },
     { new: true, runValidators: true },
   )
     .then((user) => {
