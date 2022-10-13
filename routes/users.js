@@ -7,9 +7,9 @@ const {
   updateUser, aboutMe,
 } = require('../controllers/users');
 
-userRouter.get('/me', aboutMe);
-userRouter.patch('/me', validateUpdateUser, updateUser);
-userRouter.use('*', (req, res, next) => {
+userRouter.get('/users/me', aboutMe);
+userRouter.patch('/users/me', validateUpdateUser, updateUser);
+userRouter.use('/users/*', (req, res, next) => {
   next(new NotFound('Страница не найдена'));
 });
 module.exports = userRouter;

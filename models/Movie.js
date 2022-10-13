@@ -52,9 +52,8 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'MoviesExplorer',
-    required: true,
+    type: Number,
+    required: [true, 'Поле "ID фильма" должно быть заполнено'],
   },
   nameRU: {
     type: String,

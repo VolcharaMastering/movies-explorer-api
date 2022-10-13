@@ -7,9 +7,9 @@ const {
   getMovies, delMovieById, createMovie,
 } = require('../controllers/movies');
 
-moviesRouter.get('/', getMovies);
-moviesRouter.post('/', validateCreateMovie, createMovie);
-moviesRouter.delete('/:movieId', validateMovieId, delMovieById);
+moviesRouter.get('/movies', getMovies);
+moviesRouter.post('/movies', validateCreateMovie, createMovie);
+moviesRouter.delete('/movies/:movieId', validateMovieId, delMovieById);
 moviesRouter.all('*', (req, res, next) => {
   next(new NotFound('Страница не найдена'));
 });

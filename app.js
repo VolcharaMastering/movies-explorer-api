@@ -21,12 +21,6 @@ app.use(cors());
 app.use(express.json());
 app.use(helmet());
 
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
-
 app.use(requestLogger);
 
 app.use(rateLimit);
@@ -34,8 +28,8 @@ app.use(rateLimit);
 app.post('/signin/', validateLogin, login);
 app.post('/signup/', validateCreateUser, createUser);
 
-app.use('/users', auth, userRouter);
-app.use('/movies', auth, moviesRouter);
+app.use(auth, userRouter);
+app.use(auth, moviesRouter);
 
 app.use('*', (req, res, next) => {
   next(new NotFound('Страница не найдена'));
@@ -53,8 +47,6 @@ async function connect() {
   });
 
   await app.listen(PORT);
-  // eslint-disable-next-line no-console
-  console.log(`Сервер запущен на порту ${PORT}`);
 }
 
 connect();

@@ -41,10 +41,6 @@ const aboutMe = async (req, res, next) => {
     }
     res.status(OK_CODE).send(me);
   } catch (e) {
-    if (e.name === 'CastError') {
-      next(new IncorrectData('Невалидный id', myId));
-      return;
-    }
     next(new ServerError('Произошла ошибка на сервере'));
   }
 };
@@ -90,6 +86,10 @@ const updateUser = (req, res, next) => {
       res.send(user);
     })
     .catch((e) => {
+      if (e.code === 11000) {
+        next(new ConflictError('Пользователь с таким email уже существует.'));
+        return;
+      }
       if (e.name === 'ValidationError') {
         next(new IncorrectData('Некорректные данные'));
         return;
