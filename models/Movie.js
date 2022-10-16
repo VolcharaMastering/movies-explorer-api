@@ -1,5 +1,5 @@
-/* eslint-disable no-useless-escape */
 const mongoose = require('mongoose');
+const validUrl = require('validator');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -26,7 +26,9 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле "ссылка на постер к фильму" должно быть заполнено'],
     validate: {
-      validator: (val) => /https?\:\/\/(www\.)?[a-zA-Z0-9\-\.\_\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]+\#?$/.test(val),
+      validator(val) {
+        return validUrl.isURL(val);
+      },
       message: 'Проверьте формат ссылки',
     },
   },
@@ -34,7 +36,9 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле "ссылка на трейлер к фильму" должно быть заполнено'],
     validate: {
-      validator: (val) => /https?\:\/\/(www\.)?[a-zA-Z0-9\-\.\_\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]+\#?$/.test(val),
+      validator(val) {
+        return validUrl.isURL(val);
+      },
       message: 'Проверьте формат ссылки',
     },
   },
@@ -42,7 +46,9 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Поле "миниатюрное изображение постера к фильму" должно быть заполнено'],
     validate: {
-      validator: (val) => /https?\:\/\/(www\.)?[a-zA-Z0-9\-\.\_\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]+\#?$/.test(val),
+      validator(val) {
+        return validUrl.isURL(val);
+      },
       message: 'Проверьте формат ссылки',
     },
   },
