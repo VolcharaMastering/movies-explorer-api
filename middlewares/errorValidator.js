@@ -16,19 +16,19 @@ const validLink = (value, helpers) => {
   return helpers.error('any.invalid');
 };
 
-const validRuName = (value, helpers) => {
-  if (!/[а-яА-Я0-9-._~:/?#@!$&'()*+,;=]+?$/.test(value)) {
+const validName = (value, helpers) => {
+  if (!/[а-яА-Яa-zA-Z0-9-._~:/?#@!$&'()*+,;=]+?$/.test(value)) {
     return helpers.error('any.invalid');
   }
   return value;
 };
 
-const validEnName = (value, helpers) => {
-  if (!/[a-zA-Z0-9-._~:/?#@!$&'()*+,;=]+?$/.test(value)) {
-    return helpers.error('any.invalid');
-  }
-  return value;
-};
+// const validEnName = (value, helpers) => {
+//   if (!/[a-zA-Z0-9-._~:/?#@!$&'()*+,;=]+?$/.test(value)) {
+//     return helpers.error('any.invalid');
+//   }
+//   return value;
+// };
 
 const validateCreateUser = celebrate({
   body: Joi.object().keys({
@@ -69,8 +69,8 @@ const validateCreateMovie = celebrate({
     trailerLink: Joi.string().required().custom(validLink),
     thumbnail: Joi.string().required().custom(validLink),
     movieId: Joi.number().integer().required(),
-    nameRU: Joi.string().required().custom(validRuName),
-    nameEN: Joi.string().required().custom(validEnName),
+    nameRU: Joi.string().required().custom(validName),
+    nameEN: Joi.string().required().custom(validName),
   }),
 });
 
