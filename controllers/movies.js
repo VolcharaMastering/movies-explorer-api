@@ -8,7 +8,7 @@ const { OK_CODE, CODE_CREATED } = require('../states/states');
 
 const getMovies = async (req, res, next) => {
   try {
-    const movies = await Movie.find({}).sort([['createdAt', -1]]);
+    const movies = await Movie.find({owner: req.user._id}).sort([['createdAt', -1]]);
     res.status(OK_CODE).send(movies);
   } catch (e) {
     next(new ServerError('Произошла ошибка на сервере'));
