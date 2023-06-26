@@ -1,7 +1,7 @@
 ## Проект: Фильмы. Backend.  
 
-Frontend https://movie-diplom-vmstr.nomoredomains.icu  
-Backend https://api.movie-diplom-vmstr.nomoredomains.icu  
+Frontend https://vmstr-proj.site/  
+Backend https://api.vmstr-proj.site/  
 
 **Фунционал**  
 Бэкенд для проекта `Movies`.  
